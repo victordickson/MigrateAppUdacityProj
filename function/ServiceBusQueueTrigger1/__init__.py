@@ -19,15 +19,16 @@ from sendgrid.helpers.mail import Mail
 
 
 def main(msg: func.ServiceBusMessage):
+
     
     try:
-
+        
         notification_id = int(msg.get_body().decode('utf-8'))
         logging.info(
             'Python ServiceBus queue trigger processed message: %s', notification_id)
 
         # TODO: Get connection to database
-        db_conn = psycopg2.connect(host="", database="techconfdb", user="azuredbuser", password="george")
+        db_conn = psycopg2.connect(host="udacitypostgresserver.postgres.database.azure.com", database="techconfdb", user="azuredbuser@udacitypostgresserver.postgres.database.azure.com", password="kjlKJSD0329(#&20")
 
         # Open a cursor to perform database operations
         with db_conn.cursor() as cur:
@@ -47,17 +48,18 @@ def main(msg: func.ServiceBusMessage):
             #     send_mail(attendee.email, subject, notification.message)
 
             # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
-            c_date = datetime.today()
+            c_date = datetime.utcnow()
             count_attendees =len(row)
             cur.execute("UPDATE public.notification SET completed_date = %s, status = %s WHERE id = %s", (c_date, 'Notified {} attendees'.format(count_attendees), notification_id,))
             # Commit the databases changes
-            db_conn.commit()        
+            db_conn.commit()
+            # Close connection
+            db_conn.close()
 
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(f"message error {error}")
     finally:
-        # TODO: Close connection       
-        db_conn.close()
+        # Close database connection
         logging.info("Closed ...")
 
 
@@ -68,6 +70,5 @@ def send_email(email, subject, body):
             to_emails=email,
             subject=subject,
             plain_text_content=body)
-
         sg = SendGridAPIClient(app.config.get('SENDGRID_API_KEY'))
         sg.send(message)
