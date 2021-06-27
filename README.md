@@ -73,7 +73,11 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 | ------------ | ------------ | ------------ |
 | *Azure Postgres Database* |  Basic   |     $123.16      |
 | *Azure Service Bus*   |   Standard      |   $10.00      |
-| ...                   |         |              |
+| *App Service Plan*    |  F1      |    Free        |
+| *App Service Plan*    |  Basic   |    $12.96      |
+| *Azure Storage*       |  Hot     |    $108.92<sup>1<sup>     |
+
+1: Estimated inclusive of storage operations
 
 ## Architecture Explanation
 
