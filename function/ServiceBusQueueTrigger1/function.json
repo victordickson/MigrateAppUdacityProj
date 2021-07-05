@@ -6,7 +6,7 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "notificationqueue",
-      "connection": "AzureServiceBusConnectionString"
+      "connection": "proj3SB_SERVICEBUS"
     }
   ]
 }

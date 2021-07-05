@@ -1,23 +1,20 @@
-## Screenshots
+Monthly Cost Analysis
+Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
-The following screenshots should be taken and uploaded to this **screenshots** folder:
 
-1. **Migrate Web Applications - 2 Screenshots**
 
- - Screenshot of Azure Resource showing the **App Service Plan**.
- - Screenshot of the deployed Web App running. The screenshot should be fullscreen showing the URL and application running.
 
-2. **Migrate Database - 2 Screenshots**
+| Azure Resource           | Service Tier   | Monthly Cost |
+| ------------             | ------------   | ------------ |
+| *Azure Postgres Database*| *Basic*        | *$30.30*     |
+| *Azure Service Bus*      | *Basic*        |  *$0.01*     |
+| *Azure App service plan* | *Free tier*    | *$0*         |
+| *Azure storage*          |    *Basic*     | *$0.10*      |
 
- - Screenshot of the Azure Resource showing the **Azure Database for PostgreSQL server**.
- - Screenshot of the Web App successfully loading the list of **attendees** and **notifications** from the deployed website.
 
-3. **Migrate Background Process - 4 Screenshots**
+The app service includes the web app and the function app.
 
- - Screenshot of the Azure Function App running in Azure, showing the **function name** and the **function app plan**.
- - Screenshots of the following showing functionality of the deployed site:
-    1. Submitting a new notification.
-      - Screenshot of filled out **Send Notification** form.
-    2. Notification processed after executing the Azure function.
-      - Screenshot of the **Email Notifications List** showing the notification status as **Notifications submitted**.
-      - Screenshot of the **Email Notifications List** showing the notification status as **Notified X attendees**.
+**Explanation**
+The azure web app was already available, all I had to was to change the environment variables within config.py. The web app provides better performance and user experience. It's cost effective to share one app service plan and scale independently in the future.The costs of the services are reasonable, outside of the PostgreSQL database, which is by far the most expensive part of the architecture.
+
+Other than the database, everthing else is available at a reasonable cost.
