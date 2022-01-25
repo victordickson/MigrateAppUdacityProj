@@ -18,7 +18,7 @@ def main(msg: func.ServiceBusMessage):
             'Python ServiceBus queue trigger processed message: %s', notification_id)
 
         # TODO: Get connection to database
-        db_conn = psycopg2.connect(host="proj3server.postgres.database.azure.com", database="techconfdb", user="adminproj3@proj3server.postgres.database.azure.com", password="Vikky8550")
+        db_conn = psycopg2.connect(host="proj3server.postgres.database.azure.com", database="techconfdb", user="adminproj3@proj3server.postgres.database.azure.com", password="")
 
         # Open a cursor to perform database operations
         with db_conn.cursor() as cur:
